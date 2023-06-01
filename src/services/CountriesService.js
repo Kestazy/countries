@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = 'https://restcountries.com/v3.1/allll';
+const API_URL = 'https://restcountries.com/v3.1/all';
 
 const getAllCountriesInfo = async() => {
   try {
