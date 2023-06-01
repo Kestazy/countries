@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import getAllCountriesInfo from '../services/CountriesService';
+import Countrie from './Countrie';
 
 const Main = () => {
     // state visada top level - virsuje
@@ -8,10 +9,10 @@ const Main = () => {
     const getData = () => {
         // gauti duomenis is service aprasyto axios get metodo
         getAllCountriesInfo()
-        .then(response => setCountries(response.data)
+        .then(response => setCountries(response)
     )}
 
-        console.log(countries);
+        // console.log(countries);
     // kada pakviesime daryti req - uzklausa pasako mums useEffect
     useEffect(()=>{
         getData();
@@ -19,7 +20,7 @@ const Main = () => {
 
     return (
         <div>
-            Main
+            <Countrie countries={countries}/>
         </div>
     )
 }
