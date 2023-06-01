@@ -7,18 +7,15 @@ const Countrie = ({ countries }) => {
 
 
     return (
-        <div>
+        <div className='d-inline-flex flex-wrap justify-content-center'>
             {countries !== undefined && countries.length !== 0 ?
                 countries.map((country, index) => (
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src="holder.js/100px180" />
+                    <Card className='m-3 ' style={{ width: '18rem' }} key={index}>
+                        <Card.Img variant="top" src={country.flags.png} alt={country.flags.alt} />
                         <Card.Body>
                             <Card.Title>{country.name.common}</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
+                            <Card.Text>Region: {country.region} ({country.subregion})</Card.Text>
+                            <Button variant="primary">Read more about - {country.name.common}</Button>
                         </Card.Body>
                     </Card>
                 ))
