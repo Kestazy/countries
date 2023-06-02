@@ -8,8 +8,8 @@ const Main = () => {
     const [countries, setCountries] = useState([]);
     const [filteredCountrys, setFilteredCountrys] = useState([]);
 
+    // isfiltruojami unikalus regionai
     const uniqueRegions = [...new Set(countries.map((oneRegion) => oneRegion.region)), "all"];
-
     console.log(uniqueRegions);
 
     const getData = () => {
@@ -17,17 +17,23 @@ const Main = () => {
         getAllCountriesInfo()
             .then(response => setCountries(response)
             )
+        getAllCountriesInfo()
+            .then(response => setFilteredCountrys(response)
+            )
     }
 
     const filterData = (region) => {
+        console.log(region)
         // ifas pargrazinti visus duomenis be filtracijos
         if (region !== 'all') {
+            // filtruojamos salys
             const filtered = countries.filter((items) => items.region.includes(region));
             setFilteredCountrys(filtered)
         } else {
+            // priskiriamos visos salys
             setFilteredCountrys(countries);
         }
-        // isfiltruoju prekes pagal kategorijas
+        console.log(filteredCountrys);
 
     }
 
@@ -42,8 +48,8 @@ const Main = () => {
 
     return (
         <div className=''>
-            <Regions Regions={uniqueRegions} filteredCountrys={filteredCountrys} filterData={filterData} />
-            <Countrie countries={countries} />
+            <Regions uniqueRegions={uniqueRegions} filterData={filterData} />
+            <Countrie countries={countries} filteredCountrys={filteredCountrys}/>
         </div>
     )
 }

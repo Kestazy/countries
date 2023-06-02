@@ -3,10 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-const Regions = ({ regions, filteredCountrys, filterData }) => {
-
-    console.log(regions)
-
+const Regions = ({ uniqueRegions, filterData }) => {
 
     return (
         <div>
@@ -14,7 +11,8 @@ const Regions = ({ regions, filteredCountrys, filterData }) => {
                 <Container>
                     <Navbar.Brand href="#home">Countrys</Navbar.Brand>
                     {
-                        filteredCountrys.map((newRegion, index) => (
+                        // prasukamas mapiukas ispausdirnti unikaliem regionams
+                        uniqueRegions.map((newRegion, index) => (
                             <Nav className="me-auto" key={index} >
                                 <Nav.Link href="#" onClick={() => filterData(newRegion)}>{newRegion}</Nav.Link>
                             </Nav>
