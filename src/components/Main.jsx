@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import getAllCountriesInfo from '../services/CountriesService';
 import Countrie from './Countrie';
 import Regions from './Regions';
@@ -7,31 +7,43 @@ const Main = () => {
     // state visada top level - virsuje
     const [countries, setCountries] = useState([]);
     const [filteredCountrys, setFilteredCountrys] = useState([]);
-    const [selectedRegion, setSelectedRegion] = useState('')
 
-    const uniqueRegions = [ ...new Set(countries.map((oneRegion) => oneRegion.region)), "all"];
+    const uniqueRegions = [...new Set(countries.map((oneRegion) => oneRegion.region)), "all"];
 
     console.log(uniqueRegions);
-    console.log(selectedRegion);
 
     const getData = () => {
         // gauti duomenis is service aprasyto axios get metodo
         getAllCountriesInfo()
-        .then(response => setCountries(response)
-    )}
+            .then(response => setCountries(response)
+            )
+    }
 
-        // console.log(countries);
+    const filterData = (region) => {
+        // ifas pargrazinti visus duomenis be filtracijos
+        if (region !== 'all') {
+            const filtered = countries.filter((items) => items.region.includes(region));
+            setFilteredCountrys(filtered)
+        } else {
+            setFilteredCountrys(countries);
+        }
+        // isfiltruoju prekes pagal kategorijas
+
+    }
+
+
+
+    // console.log(countries);
     // kada pakviesime daryti req - uzklausa pasako mums useEffect
-    useEffect(()=>{
+    useEffect(() => {
         getData();
     }, [])
 
-    console.log(selectedRegion)
 
     return (
         <div className=''>
-            <Regions uniqueRegions={uniqueRegions} setSelectedRegion={setSelectedRegion}/>
-            <Countrie countries={countries}/>
+            <Regions Regions={uniqueRegions} filteredCountrys={filteredCountrys} filterData={filterData} />
+            <Countrie countries={countries} />
         </div>
     )
 }
