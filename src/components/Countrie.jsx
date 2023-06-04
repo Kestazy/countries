@@ -3,12 +3,12 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 const Countrie = ({ filteredCountrys }) => {
-    
+
     // pasitikrinimo tikslais
     console.log(filteredCountrys);
 
     return (
-        <div className='d-inline-flex flex-wrap justify-content-center bg-dark'>
+        <div className='d-inline-flex flex-wrap justify-content-center bg-dark w-100'>
             {/* apsauga nuo duomenu negavimo is DB (jaigu nera stalciuko, arba jis tuscias) */}
             {filteredCountrys !== undefined && filteredCountrys.length !== 0 ?
                 // sukamas mapiukas ispausdinti salies informacijai
