@@ -8,14 +8,13 @@ const Main = () => {
     // state visada top level - virsuje
     const [countries, setCountries] = useState([]);
     const [filteredCountrys, setFilteredCountrys] = useState([]);
-    const [searchCountrysName, setSearchCountrysName] = useState([]);
 
+    // statai salies paieskai pagal pavadinima
     const [name, setName] = useState([]);
     const inputRef = useRef()
 
-
+    // funkcija duomenu gavimui is service (https://restcountries.com/v3.1/name/{name})
     const getCountryName = (uniqContry) => {
-        // gauti duomenis is service aprasyto axios get metodo
         countrysSearchName(uniqContry)
             .then(response => {
                 if (response !== undefined) {
@@ -40,6 +39,7 @@ const Main = () => {
     const uniqueRegions = [...new Set(countries.map((oneRegion) => oneRegion.region)), "All"];
     console.log(uniqueRegions);
 
+    // funkcija isfiltruoja duomenis pagal regiona
     const filterData = (region) => {
         console.log(region)
         // ifas pargrazinti visus duomenis be filtracijos
