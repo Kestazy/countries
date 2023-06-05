@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const Regions = ({ uniqueRegions, filterData,  getCountryName }) => {
 
@@ -35,7 +34,7 @@ const Regions = ({ uniqueRegions, filterData,  getCountryName }) => {
                                 aria-label="Search"
                                 onChange={(e) => getCountryName(e.target.value)}
                             />
-                            <Button variant="secondary" >don't push</Button>
+                            <Button variant="secondary" >don't</Button>
                         </Form>
                     </Navbar.Collapse>
                 </Container>

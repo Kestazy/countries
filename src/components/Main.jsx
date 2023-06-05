@@ -14,11 +14,11 @@ const Main = () => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    const setModalIsOpenToTrue =()=>{
+    const setModalIsOpenToTrue = () => {
         setModalIsOpen(true)
     }
 
-    const setModalIsOpenToFalse =()=>{
+    const setModalIsOpenToFalse = () => {
         setModalIsOpen(false)
     }
 
@@ -64,8 +64,8 @@ const Main = () => {
 
     const getOneCountryInfo = (country) => {
         getOneCountry(country).then(response => {
-           console.log(country, response)
-           setOneCountry(response)
+            console.log(country, response)
+            setOneCountry(response)
         })
         setModalIsOpenToTrue()
     }
@@ -79,10 +79,25 @@ const Main = () => {
 
     return (
         <div className=''>
-            <Regions uniqueRegions={uniqueRegions} filterData={filterData} getCountryName={getCountryName} />
-            <Countrie countries={countries} filteredCountrys={filteredCountrys} getOneCountryInfo={getOneCountryInfo} />
-            <Modal isOpen={modalIsOpen} >
-                <ContryModal setModalIsOpenToFalse={setModalIsOpenToFalse} oneCountry={oneCountry} />
+            <Regions
+                uniqueRegions={uniqueRegions}
+                filterData={filterData}
+                getCountryName={getCountryName}
+            />
+
+            <Countrie
+                countries={countries}
+                filteredCountrys={filteredCountrys}
+                getOneCountryInfo={getOneCountryInfo}
+            />
+            
+            <Modal
+                isOpen={modalIsOpen}
+            >
+                <ContryModal
+                    setModalIsOpenToFalse={setModalIsOpenToFalse}
+                    oneCountry={oneCountry}
+                />
             </Modal>
         </div>
     )
