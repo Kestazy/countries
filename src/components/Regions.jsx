@@ -6,7 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-const Regions = ({ uniqueRegions, filterData, focus, inputRef, setName, name }) => {
+const Regions = ({ uniqueRegions, filterData,  getCountryName }) => {
 
     return (
         <div>
@@ -29,15 +29,13 @@ const Regions = ({ uniqueRegions, filterData, focus, inputRef, setName, name }) 
                         }
                         <Form className="d-flex">
                             <Form.Control
-                                ref={inputRef} 
-                                value={name}
                                 type="search"
                                 placeholder="Contry name:"
                                 className="me-2"
                                 aria-label="Search"
-                                onChange={(e) => setName(e.target.value)}
+                                onChange={(e) => getCountryName(e.target.value)}
                             />
-                            <Button variant="secondary" onClick={focus}>Search</Button>
+                            <Button variant="secondary" >don't push</Button>
                         </Form>
                     </Navbar.Collapse>
                 </Container>

@@ -2,7 +2,7 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const Countrie = ({ filteredCountrys }) => {
+const Countrie = ({ filteredCountrys, getOneCountryInfo }) => {
 
     // pasitikrinimo tikslais
     console.log(filteredCountrys);
@@ -19,7 +19,10 @@ const Countrie = ({ filteredCountrys }) => {
                             <Card.Title>{country.name.common}</Card.Title>
                             <Card.Text>Capital: {country.capital}</Card.Text>
                             <Card.Text>Region: {country.region} ({country.subregion})</Card.Text>
-                            <Button variant="primary"  >Read more about - {country.name.common}</Button>
+                            <Button 
+                            variant="primary"
+                            onClick={() => getOneCountryInfo(country.name.common)} 
+                             >Read more about - {country.name.common}</Button>
                         </Card.Body>
                     </Card>
                 ))

@@ -1,6 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import getAllCountriesInfo from '../services/CountriesService';
-import countrysSearchName from '../services/CountrysSearchName';
+import { useState, useEffect } from 'react';
+import { getAllCountriesInfo, countrysSearchName, getOneCountry } from '../services/CountriesService';
 import Countrie from './Countrie';
 import Regions from './Regions';
 
@@ -9,18 +8,12 @@ const Main = () => {
     const [countries, setCountries] = useState([]);
     const [filteredCountrys, setFilteredCountrys] = useState([]);
 
-    // statai salies paieskai pagal pavadinima
-    const [name, setName] = useState([]);
-    const inputRef = useRef()
-
     // funkcija duomenu gavimui is service (https://restcountries.com/v3.1/name/{name})
-    const getCountryName = (uniqContry) => {
-        countrysSearchName(uniqContry)
+    const getCountryName = (searchWord) => {
+        countrysSearchName(searchWord)
             .then(response => {
                 if (response !== undefined) {
                     setFilteredCountrys(response)
-                } else {
-                    setFilteredCountrys(countries)
                 }
             })
     }
@@ -35,6 +28,7 @@ const Main = () => {
             })
     }
 
+    console.log(getAllCountriesInfo)
     // isfiltruojami unikalus regionai
     const uniqueRegions = [...new Set(countries.map((oneRegion) => oneRegion.region)), "All"];
     console.log(uniqueRegions);
@@ -54,13 +48,10 @@ const Main = () => {
         console.log(filteredCountrys);
     }
 
-    // paieska pagal salies pavadinimas
-    function focus(e) {
-        e.preventDefault();
-        inputRef.current.focus()
-        console.log(name)
-        getCountryName(name)
-        
+    const getOneCountryInfo = (country) => {
+        getOneCountry(country).then(response => {
+           console.log(country, response)
+        })
     }
 
     // console.log(countries);
@@ -72,8 +63,8 @@ const Main = () => {
 
     return (
         <div className=''>
-            <Regions uniqueRegions={uniqueRegions} filterData={filterData} focus={focus} inputRef={inputRef} setName={setName} name={name} />
-            <Countrie countries={countries} filteredCountrys={filteredCountrys} />
+            <Regions uniqueRegions={uniqueRegions} filterData={filterData} getCountryName={getCountryName} />
+            <Countrie countries={countries} filteredCountrys={filteredCountrys} getOneCountryInfo={getOneCountryInfo} />
         </div>
     )
 }
