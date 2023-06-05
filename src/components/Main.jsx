@@ -2,11 +2,25 @@ import { useState, useEffect } from 'react';
 import { getAllCountriesInfo, countrysSearchName, getOneCountry } from '../services/CountriesService';
 import Countrie from './Countrie';
 import Regions from './Regions';
+import ContryModal from './ContryModal';
+import Modal from 'react-modal';
 
 const Main = () => {
     // state visada top level - virsuje
     const [countries, setCountries] = useState([]);
     const [filteredCountrys, setFilteredCountrys] = useState([]);
+
+    const [oneCountry, setOneCountry] = useState([]);
+
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const setModalIsOpenToTrue =()=>{
+        setModalIsOpen(true)
+    }
+
+    const setModalIsOpenToFalse =()=>{
+        setModalIsOpen(false)
+    }
 
     // funkcija duomenu gavimui is service (https://restcountries.com/v3.1/name/{name})
     const getCountryName = (searchWord) => {
@@ -51,7 +65,9 @@ const Main = () => {
     const getOneCountryInfo = (country) => {
         getOneCountry(country).then(response => {
            console.log(country, response)
+           setOneCountry(response)
         })
+        setModalIsOpenToTrue()
     }
 
     // console.log(countries);
@@ -65,6 +81,9 @@ const Main = () => {
         <div className=''>
             <Regions uniqueRegions={uniqueRegions} filterData={filterData} getCountryName={getCountryName} />
             <Countrie countries={countries} filteredCountrys={filteredCountrys} getOneCountryInfo={getOneCountryInfo} />
+            <Modal isOpen={modalIsOpen} >
+                <ContryModal setModalIsOpenToFalse={setModalIsOpenToFalse} oneCountry={oneCountry} />
+            </Modal>
         </div>
     )
 }
