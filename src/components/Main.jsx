@@ -15,6 +15,7 @@ const Main = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const setModalIsOpenToTrue = () => {
+        Modal.setAppElement("body")
         setModalIsOpen(true)
     }
 
@@ -91,15 +92,16 @@ const Main = () => {
                 getOneCountryInfo={getOneCountryInfo}
             />
             
-            <Modal
-                isOpen={modalIsOpen}
-            >
+            <Modal 
+                isOpen={modalIsOpen} 
+                >
                 <ContryModal
                     setModalIsOpenToFalse={setModalIsOpenToFalse}
                     oneCountry={oneCountry}
                 />
             </Modal>
         </div>
+        
     )
 }
 
