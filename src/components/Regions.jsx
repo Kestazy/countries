@@ -10,7 +10,7 @@ const Regions = ({ uniqueRegions, filterData,  getCountryName }) => {
         <div>
             <Navbar bg="primary" variant="dark" expand="lg">
                 <Container fluid>
-                    <Navbar.Brand href="#">Countrys</Navbar.Brand>
+                    <Navbar.Brand >Countrys</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         {
@@ -21,7 +21,7 @@ const Regions = ({ uniqueRegions, filterData,  getCountryName }) => {
                                     style={{ maxHeight: '100px' }}
                                     navbarScroll
                                 >
-                                    <Nav.Link href="#action1" onClick={() => filterData(newRegion)}>{newRegion}</Nav.Link>
+                                    <Nav.Link className='fw-bold' href="#action1" onClick={() => filterData(newRegion)}>{newRegion}</Nav.Link>
                                 </Nav>
                             ))
                         }

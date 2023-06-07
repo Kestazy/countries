@@ -60,8 +60,6 @@ const Main = () => {
         })
     }
 
-
-
     // isfiltruojami unikalus regionai
     const uniqueRegions = [...new Set(countries.map((oneRegion) => oneRegion.region)), "All"];
     console.log(uniqueRegions);
@@ -107,7 +105,6 @@ const Main = () => {
                 show={show}
             />
         </div>
-
     )
 }
 
