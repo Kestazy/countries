@@ -10,7 +10,7 @@ const Regions = ({ uniqueRegions, filterData,  getCountryName }) => {
         <div>
             <Navbar bg="primary" variant="dark" expand="lg">
                 <Container fluid>
-                    <Navbar.Brand >Countrys</Navbar.Brand>
+                    <Navbar.Brand className='me-5' >Countrys.</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         {
@@ -28,7 +28,7 @@ const Regions = ({ uniqueRegions, filterData,  getCountryName }) => {
                         <Form className="d-flex">
                             <Form.Control
                                 type="search"
-                                placeholder="Contry name:"
+                                placeholder="Enter country name"
                                 className="me-2"
                                 aria-label="Search"
                                 onChange={(e) => getCountryName(e.target.value)}

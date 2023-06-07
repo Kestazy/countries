@@ -16,3 +16,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.cards{
+  transition: all 0.2s ease;
+}
+
+.cards:hover{
+  box-shadow: -5px 6px 6px 2px #e9ecef;
+  transform: scale(1.1);
+}
