@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
@@ -34,7 +33,6 @@ const Regions = ({ uniqueRegions, filterData,  getCountryName }) => {
                                 aria-label="Search"
                                 onChange={(e) => getCountryName(e.target.value)}
                             />
-                            <Button variant="secondary" >don't</Button>
                         </Form>
                     </Navbar.Collapse>
                 </Container>

@@ -1,14 +1,15 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Spinner from 'react-bootstrap/Spinner';
 
-const Countrie = ({ filteredCountrys, getOneCountryInfo }) => {
+const Countrie = ({ filteredCountrys, getOneCountryInfo, spiner }) => {
 
     // pasitikrinimo tikslais
     console.log(filteredCountrys);
 
     return (
-        <div className='d-inline-flex flex-wrap justify-content-center bg-dark w-100'>
+        <div className='d-inline-flex flex-wrap justify-content-center w-100'>
             {/* apsauga nuo duomenu negavimo is DB (jaigu nera stalciuko, arba jis tuscias) */}
             {filteredCountrys !== undefined && filteredCountrys.length !== 0 ?
                 // sukamas mapiukas ispausdinti salies informacijai
@@ -19,15 +20,15 @@ const Countrie = ({ filteredCountrys, getOneCountryInfo }) => {
                             <Card.Title>{country.name.common}</Card.Title>
                             <Card.Text>Capital: {country.capital}</Card.Text>
                             <Card.Text>Region: {country.region} ({country.subregion})</Card.Text>
-                            <Button 
-                            variant="primary"
-                            onClick={() => getOneCountryInfo(country.name.common)} 
-                             >Read more about - {country.name.common}</Button>
+                            <Button
+                                variant="outline-info"
+                                onClick={() => getOneCountryInfo(country.name.common)}
+                            >Read more about - {country.name.common}</Button>
                         </Card.Body>
                     </Card>
                 ))
                 // jai nesuveike ifukas rodomas sis tekstas narsykleje
-                : <h1>Duomenys nerasti</h1>
+                : <Spinner className='m-5' animation={spiner} variant="info" />
             }
         </div>
     )
