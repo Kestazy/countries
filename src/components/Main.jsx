@@ -86,7 +86,6 @@ const Main = () => {
         getData();
     }, [])
 
-
     return (
         <div className=''>
             <Regions
