@@ -18,8 +18,8 @@ const ContryModal = ({ oneCountry, show, handleClose }) => {
                                 <h4 className='border-bottom border-secondary-subtle d-flex justify-content-center pb-2'>Capital: {country.capital}</h4>
                                 <p className='mt-4' >Population: {country.population}</p>
                                 <p>Area: {country.area} km²</p>
-                                <p>Currencies: {(country.currencies === undefined) || (country.currencies.length === 0) || (typeof (Object.keys(oneCountry[0].currencies).map(key => oneCountry[0].currencies[key])) !== 'object') ? "" : Object.keys(oneCountry[0].currencies).map(key => Object.keys(oneCountry[0].currencies[key]).map(item => oneCountry[0].currencies[key][item] + " "))}</p>
-                                <p>Languages: {(country.languages === undefined) || (country.languages.length === 0) || (typeof (Object.keys(oneCountry[0].languages)) !== 'object') ? "" : Object.keys(oneCountry[0].languages).map(key => (oneCountry[0].languages[key]))}</p>
+                                <p>Currencies: {(country.currencies === undefined) || (country.currencies.length === 0) || (typeof (Object.keys(oneCountry[0].currencies).map(key => oneCountry[0].currencies[key])) !== 'object') ? "No informatio" : Object.keys(oneCountry[0].currencies).map(key => Object.keys(oneCountry[0].currencies[key]).map(item => oneCountry[0].currencies[key][item] + " "))}</p>
+                                <p>Languages: {(country.languages === undefined) || (country.languages.length === 0) || (typeof (Object.keys(oneCountry[0].languages)) !== 'object') ? "No informatio" : Object.keys(oneCountry[0].languages).map(key => (oneCountry[0].languages[key]))}</p>
                                 <span>Borders: </span>
                                 {(country.borders !== undefined) ?
                                             Object.keys(oneCountry[0].borders).map((key, index) => {
@@ -27,7 +27,7 @@ const ContryModal = ({ oneCountry, show, handleClose }) => {
                                                     <span key={index}>{`${oneCountry[0].borders[key]} `}</span>
                                                 )
                                             })
-                                    : <p></p>
+                                    : <span>No information</span>
                                 }
                             </Modal.Body>
                             <Modal.Footer className='bg-secondary border-white-subtle '>
