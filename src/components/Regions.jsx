@@ -10,7 +10,7 @@ const Regions = ({ uniqueRegions, filterData,  getCountryName }) => {
         <div>
             <Navbar bg="primary" variant="dark" expand="lg">
                 <Container fluid>
-                    <Navbar.Brand className='me-5' >Countrys.</Navbar.Brand>
+                    <Navbar.Brand className='me-5' >Countries.</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         {

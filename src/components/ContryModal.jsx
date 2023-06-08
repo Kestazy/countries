@@ -20,17 +20,13 @@ const ContryModal = ({ oneCountry, show, handleClose }) => {
                                 <p>Area: {country.area} km²</p>
                                 <p>Currencies: {(country.currencies === undefined) || (country.currencies.length === 0) || (typeof (Object.keys(oneCountry[0].currencies).map(key => oneCountry[0].currencies[key])) !== 'object') ? "" : Object.keys(oneCountry[0].currencies).map(key => Object.keys(oneCountry[0].currencies[key]).map(item => oneCountry[0].currencies[key][item] + " "))}</p>
                                 <p>Languages: {(country.languages === undefined) || (country.languages.length === 0) || (typeof (Object.keys(oneCountry[0].languages)) !== 'object') ? "" : Object.keys(oneCountry[0].languages).map(key => (oneCountry[0].languages[key]))}</p>
-                                <p>Borders: </p>
+                                <span>Borders: </span>
                                 {(country.borders !== undefined) ?
-                                    <ul className='list-group'>
-                                        {
                                             Object.keys(oneCountry[0].borders).map((key, index) => {
                                                 return (
-                                                    <li className='list-group-item text-white bg-secondary border-0' key={index}>{oneCountry[0].borders[key]}</li>
+                                                    <span key={index}>{`${oneCountry[0].borders[key]} `}</span>
                                                 )
                                             })
-                                        }
-                                    </ul>
                                     : <p></p>
                                 }
                             </Modal.Body>
